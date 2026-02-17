@@ -1,0 +1,6 @@
+
+config BR2_PACKAGE_AESD_SOCKETAPP
+    bool "aesd-socketApp"
+    help
+        Includes the aesdSocket application
+        Used to understand sockets in Linux
