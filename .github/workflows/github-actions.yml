@@ -17,6 +17,12 @@ jobs:
           - uses: webfactory/ssh-agent@v0.9.0
             with:
                 ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          - name: Disable strict host checking
+            run: |
+                mkdir -p ~/.ssh
+                echo "Host localhost" >> ~/.ssh/config
+                echo " StrictHostKeyChecking no" >> ~/.ssh/config
+                echo " UserKNownHostFile /dev/nll" >> ~/.ssh/config
           - name: Run full test
             env:
               GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no"
